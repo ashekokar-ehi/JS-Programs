@@ -1,0 +1,20 @@
+const fileList = ["abc.txt", "abcd.js", "temp.txt"];
+
+const uploadFile = (fileName) => { 
+  const extInd = fileName.lastIndexOf(".");
+  const name = fileName.substring(0, extInd);
+  const ext = fileName.substring(extInd, fileName.length);
+  let newName = fileName;
+  const list = fileList.filter(item => item.toLowerCase().startsWith(name));
+  for(let i = 1; list.includes(newName); i++){
+    newName = `${name}.${i}${ext}`;
+  }
+  fileList.push(newName);
+};
+
+uploadFile("abcd.txt");
+uploadFile("abcd.txt");
+uploadFile("abcd.txt");
+uploadFile("abcd.txt");
+uploadFile("abcd.txt");
+console.log(fileList);
